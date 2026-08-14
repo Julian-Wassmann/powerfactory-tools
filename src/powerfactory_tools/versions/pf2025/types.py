@@ -758,8 +758,8 @@ class PowerFactoryTypes:
         def CreateObject(  # noqa: N802
             self,
             class_name: str,
-            name: str | int | None,
             /,
+            *name: str | int,
         ) -> PowerFactoryTypes.DataObject | None: ...
 
         def CreateProject(  # noqa: N802
