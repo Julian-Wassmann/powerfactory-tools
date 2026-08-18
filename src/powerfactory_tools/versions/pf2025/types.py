@@ -759,7 +759,7 @@ class PowerFactoryTypes:
             self,
             class_name: str,
             /,
-            *name: str | int,
+            *concat_name_parts: str | int,
         ) -> PowerFactoryTypes.DataObject | None: ...
 
         def CreateProject(  # noqa: N802
