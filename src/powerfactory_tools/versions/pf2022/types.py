@@ -1170,7 +1170,7 @@ class PowerFactoryTypes:
     class PythonScript(Script, t.Protocol):  # PFClassId.SCRIPT_PYTHON
         ...
 
-    class ProjectFolder(DataObject, t.Protocol):  # PFClassId.FOLDER
+    class ProjectFolder(DataObject, t.Protocol):  # PFClassId.PROJECT_FOLDER
         desc: Sequence[str]
         iopt_typ: FolderType
 
