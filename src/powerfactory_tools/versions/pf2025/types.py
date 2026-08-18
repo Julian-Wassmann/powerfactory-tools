@@ -751,15 +751,15 @@ class PowerFactoryTypes:
         def AddCopy(  # noqa: N802
             self,
             object_to_copy: PowerFactoryTypes.DataObject | Sequence[PowerFactoryTypes.DataObject],
-            concat_name_part: str | int = "",
             /,
+            *concat_name_parts: str | int,
         ) -> PowerFactoryTypes.DataObject | None: ...
 
         def CreateObject(  # noqa: N802
             self,
             class_name: str,
-            name: str | int | None,
             /,
+            *concat_name_parts: str | int,
         ) -> PowerFactoryTypes.DataObject | None: ...
 
         def CreateProject(  # noqa: N802
@@ -1426,7 +1426,7 @@ class PowerFactoryTypes:
     class PythonScript(Script, t.Protocol):  # PFClassId.SCRIPT_PYTHON
         ...
 
-    class ProjectFolder(DataObject, t.Protocol):  # PFClassId.FOLDER
+    class ProjectFolder(DataObject, t.Protocol):  # PFClassId.PROJECT_FOLDER
         desc: Sequence[str]
         iopt_typ: FolderType
 
