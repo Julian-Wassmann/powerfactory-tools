@@ -751,8 +751,8 @@ class PowerFactoryTypes:
         def AddCopy(  # noqa: N802
             self,
             object_to_copy: PowerFactoryTypes.DataObject | Sequence[PowerFactoryTypes.DataObject],
-            concat_name_part: str | int = "",
             /,
+            *concat_name_parts: str | int,
         ) -> PowerFactoryTypes.DataObject | None: ...
 
         def CreateObject(  # noqa: N802
