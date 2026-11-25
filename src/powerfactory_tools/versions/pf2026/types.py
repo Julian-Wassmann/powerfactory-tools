@@ -850,6 +850,14 @@ class PowerFactoryTypes:
             /,
         ) -> str: ...
 
+        def GetConnectedElements(  # noqa: N802
+            self,
+            rBrk: bool = False,  # noqa: FBT001, FBT002, N803
+            rDis: bool = False,  # noqa: FBT001, FBT002, N803
+            rOut: bool = False,  # noqa: FBT001, FBT002, N803
+            /,
+        ) -> Sequence[PowerFactoryTypes.DataObject]: ...
+
         def GetContents(  # noqa: N802
             self,
             name: str = "*",
@@ -871,6 +879,14 @@ class PowerFactoryTypes:
 
         def GetParent(self) -> PowerFactoryTypes.DataObject | None:  # noqa: N802
             ...
+
+        def GetReferences(  # noqa: N802
+            self,
+            filter: str = "*",  # noqa: A002
+            includeSubsets: bool = False,  # noqa: FBT001, FBT002, N803
+            includeHiddenObjects: bool = False,  # noqa: FBT001, FBT002, N803
+            includeDataExtensions: bool = False,  # noqa: FBT001, FBT002, N803
+        ) -> Sequence[PowerFactoryTypes.DataObject]: ...
 
         def IsCalcRelevant(self) -> int:  # noqa: N802
             ...
@@ -1426,7 +1442,10 @@ class PowerFactoryTypes:
     class PythonScript(Script, t.Protocol):  # PFClassId.SCRIPT_PYTHON
         ...
 
-    class ProjectFolder(DataObject, t.Protocol):  # PFClassId.FOLDER
+    class Folder(DataObject, t.Protocol):  # PFClassId.FOLDER
+        iopt_typ: int
+
+    class ProjectFolder(DataObject, t.Protocol):  # PFClassId.PROJECT_FOLDER
         desc: Sequence[str]
         iopt_typ: FolderType
 
@@ -1591,6 +1610,11 @@ class PowerFactoryTypes:
             self,
             command: t.Literal["exit"],
             /,
+        ) -> None: ...
+
+        def Rebuild(  # noqa: N802
+            self,
+            iMode: t.Literal[0, 1, 2] = 1,  # noqa: N803
         ) -> None: ...
 
         def ResetCalculation(self) -> None:  # noqa: N802
